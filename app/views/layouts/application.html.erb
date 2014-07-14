@@ -1,14 +1,29 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Egopost</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
+	<link rel="stylesheet/less" href="/style.less">
+	<script src="/less.js"></script>
 </head>
+
 <body>
-
-<%= yield %>
-
+	<header>
+	<div class="wrapper">
+		<img src="/gfx/logo.png">
+            <span>EgoPost</span>
+        </div>
+    </header>
+    <div id="content">
+        <div class="wrapper">
+            <% flash.each do |name, msg| %>
+                <%= content_tag :div, msg, class: "flash #{name}" %>
+            <% end %>
+            <%= yield %>
+        </div>
+    </div>
+    <footer>
+        <div class="wrapper">
+            EgoPost - Because everything involving you is important
+        </div>
+    </footer>
 </body>
 </html>
